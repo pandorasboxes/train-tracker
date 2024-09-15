@@ -1,0 +1,5 @@
+module.exports = {
+    googleMapsApiKey: 'AIzaSyCknPtke_czUHDZJeQirj4RD-Da4clTJcA', // Replace with your Google Maps API Key
+    trainApiUrl: 'http://localhost:3001', // Replace with your train data API URL
+  };
+  

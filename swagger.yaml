@@ -1,0 +1,77 @@
+swagger: '2.0'
+info:
+  title: Train Tracking API
+  version: 1.0.0
+paths:
+  /trains:
+    get:
+      summary: Get all trains
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Train'
+    post:
+      summary: Create a new train
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/Train'
+      responses:
+        201:
+          description: Train created successfully
+        400:
+          description: Bad request
+  /trains/{id}:
+    get:
+      summary: Get a train by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successful response
+          schema:
+            $ref: '#/definitions/Train'
+        404:
+          description: Train not found
+  /trains/search:
+    get:
+      summary: Search for trains
+      parameters:
+        - name: name
+          in: query
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Train'
+definitions:
+  Train:
+    type: object
+    properties:
+      trainId:
+        type: string
+      trainName:
+        type: string
+      engineModel:
+        type: string
+      engineId:
+        type: string
+      lastStation:
+        type: string
+      startLocation:
+        type: string
+      destination:
+        type: string
+      speed:
+        type: number
